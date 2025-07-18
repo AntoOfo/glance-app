@@ -11,6 +11,11 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.Font
+import com.antonio.glance.R
+
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -41,6 +46,15 @@ private val GlanceLightColorScheme = lightColorScheme(
     onBackground = Color.Black,
     onSurface = Color.Black,
     onSecondary = Color.White
+)
+
+val Inter = FontFamily(
+    Font(R.font.inter_thin, FontWeight.Thin),
+    Font(R.font.inter_extralight, FontWeight.ExtraLight),
+    Font(R.font.inter_light, FontWeight.Light),
+    Font(R.font.inter_regular, FontWeight.Normal),
+    Font(R.font.inter_medium, FontWeight.Medium),
+    Font(R.font.inter_semibold, FontWeight.SemiBold)
 )
 
 @Composable
