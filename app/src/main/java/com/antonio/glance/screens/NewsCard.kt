@@ -9,8 +9,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -92,8 +96,24 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(start = 2.dp, top = 6.dp)
             ) {
-
+                Text(
+                    text = "Click to read more.",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                IconButton(
+                    onClick = {},
+                    modifier = Modifier
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.bookmark_border),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.secondary,
+                        modifier = Modifier
+                            .size(26.dp)
+                    )
+                }
             }
         }
     }
