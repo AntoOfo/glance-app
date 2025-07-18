@@ -44,8 +44,8 @@ val Typography = Typography(
     labelMedium = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.ExtraLight,
-        fontSize = 14.sp,
-        lineHeight = 22.sp,
+        fontSize = 11.sp,
+        lineHeight = 13.sp,
         letterSpacing = 0.5.sp
     ),
     // 3rd smallest
@@ -53,7 +53,7 @@ val Typography = Typography(
         fontFamily = Inter,
         fontWeight = FontWeight.Light,
         fontSize = 12.sp,
-        lineHeight = 22.sp,
+        lineHeight = 14.sp,
         letterSpacing = 0.2.sp
     )
 )
