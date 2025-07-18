@@ -12,24 +12,24 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
+        fontSize = 11.sp,
+        lineHeight = 11.sp,
         letterSpacing = 0.5.sp
     ),
     // bigger version of bold text?
     titleMedium = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.Medium,
-        fontSize = 20.sp,
-        lineHeight = 26.sp,
+        fontSize = 12.sp,
+        lineHeight = 11.sp,
         letterSpacing = 0.sp
     ),
     // even bigger version of bold text?
     titleLarge = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
+        fontSize = 13.sp,
+        lineHeight = 16.sp,
         letterSpacing = 0.sp
     ),
     // smallest text
@@ -52,8 +52,8 @@ val Typography = Typography(
     labelLarge = TextStyle(
         fontFamily = Inter,
         fontWeight = FontWeight.Light,
-        fontSize = 14.sp,
+        fontSize = 12.sp,
         lineHeight = 22.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.2.sp
     )
 )
