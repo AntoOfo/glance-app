@@ -2,6 +2,7 @@ package com.antonio.glance.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
@@ -24,9 +25,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 
@@ -37,7 +40,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface,
         modifier = modifier
-            .aspectRatio(513f / 576f)
+            .aspectRatio(513f / 565f)
             .padding(4.dp)
     ) {
         Column(
@@ -64,14 +67,14 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 text = "BBC News - 3h ago",   // dummy title
                 style = MaterialTheme.typography.labelLarge,
                 modifier = Modifier
-                    .padding(top = 12.dp)
+                    .padding(top = 14.dp)
                     .alpha(0.8f)
             )
             Text(
                 text = "Guterres tells UN meeting that impunity, inequality, and other challenges risk engulfing the world",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier
-                    .padding(top = 6.dp, bottom = 10.dp)
+                    .padding(top = 8.dp, bottom = 12.dp)
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -89,22 +92,25 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .alpha(0.7f)
-                    .padding(top = 10.dp)
+                    .padding(top = 12.dp)
             )
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 2.dp, top = 6.dp)
+                    .padding(top = 6.dp)
             ) {
                 Text(
                     text = "Click to read more.",
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .padding(top = 2.dp),
+                    textAlign = TextAlign.Center,
+                    fontSize = 10.sp
                 )
                 IconButton(
                     onClick = {},
-                    modifier = Modifier
+                    modifier = Modifier.align(Alignment.CenterEnd)
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.bookmark_border),
