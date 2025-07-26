@@ -38,13 +38,6 @@ fun NewsVerticalPager(modifier: Modifier = Modifier) {
         ) {
             NewsCard(modifier = Modifier)
 
-            if (pageIndex < newsCount - 1) {
-                Icon(
-                    imageVector = Icons.Filled.KeyboardArrowDown,
-                    contentDescription = "Scroll down",
-                    tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                )
-            }
         }
     }
 }
