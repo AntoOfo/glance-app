@@ -21,6 +21,7 @@ import com.antonio.glance.ui.theme.GlanceTheme
 fun SearchBar(modifier: Modifier = Modifier){
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
+        shadowElevation = 3.dp,
         modifier = modifier.fillMaxWidth()
     ) {
         TextField(

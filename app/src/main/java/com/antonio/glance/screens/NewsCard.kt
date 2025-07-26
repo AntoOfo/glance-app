@@ -39,6 +39,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface,
+        shadowElevation = 4.dp,
         modifier = modifier
             .aspectRatio(513f / 565f)
             .padding(4.dp)
