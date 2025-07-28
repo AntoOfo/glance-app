@@ -20,14 +20,14 @@ import com.antonio.glance.ui.theme.GlanceTheme
 @Composable
 fun SearchBar(modifier: Modifier = Modifier){
     Surface(
-        shape = MaterialTheme.shapes.extraLarge,
+        shape = MaterialTheme.shapes.large,
         shadowElevation = 3.dp,
         modifier = modifier.fillMaxWidth()
     ) {
         TextField(
             value = "",
             onValueChange = {},
-            leadingIcon = {
+            trailingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
