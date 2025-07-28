@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -75,13 +76,13 @@ fun NewsCard(modifier: Modifier = Modifier,
                 modifier = Modifier
                     .alpha(0.8f)
             )
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = "Guterres tells UN meeting that impunity, inequality, and other challenges risk engulfing the world",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
@@ -90,7 +91,7 @@ fun NewsCard(modifier: Modifier = Modifier,
                     .alpha(0.6f)
                     .fillMaxWidth(0.99f))
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             Text(
                 // dummy bio
                 text = "The head of the United Nations warned gathered leaders Tuesday that impunity, inequality and uncertainty are driving modern civilisation toward \"a powder keg that risks engulfing the world\" - the latest clarion call from Antonio Guterres that the global situation is becoming intolerable and unsustainable.",
@@ -102,18 +103,8 @@ fun NewsCard(modifier: Modifier = Modifier,
             )
             Spacer(modifier = Modifier.height(8.dp))
             Box(
-                modifier = Modifier
-                    .fillMaxWidth()
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
-                    text = "Click to read more.",
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .padding(end = 30.dp),
-                    textAlign = TextAlign.Center,
-                    fontSize = 10.sp
-                )
                 IconButton(
                     onClick = {},
                     modifier = Modifier.align(Alignment.CenterEnd)
@@ -123,7 +114,7 @@ fun NewsCard(modifier: Modifier = Modifier,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.secondary,
                         modifier = Modifier
-                            .size(26.dp)
+                            .size(24.dp)
                     )
                 }
             }
