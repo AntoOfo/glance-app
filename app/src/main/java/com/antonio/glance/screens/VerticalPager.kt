@@ -33,8 +33,8 @@ fun NewsVerticalPager(modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(10.dp),
-            contentAlignment = Alignment.Center
+                .padding(top = 50.dp, start = 10.dp, end = 10.dp, bottom = 10.dp),
+            contentAlignment = Alignment.TopCenter
         ) {
             NewsCard(modifier = Modifier)
 

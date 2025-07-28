@@ -15,7 +15,7 @@ import com.antonio.glance.ui.theme.GlanceTheme
 fun HomeScreen(modifier: Modifier = Modifier) {
 
     Column(modifier = modifier) {
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(20.dp))
 
         SearchBar(Modifier.padding(horizontal = 16.dp))
 

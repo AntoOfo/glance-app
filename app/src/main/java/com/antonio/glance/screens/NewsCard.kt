@@ -41,7 +41,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
         color = MaterialTheme.colorScheme.surface,
         shadowElevation = 4.dp,
         modifier = modifier
-            .aspectRatio(513f / 565f)
+            .aspectRatio(513f / 580f)
             .padding(4.dp)
     ) {
         Column(
