@@ -1,6 +1,7 @@
 package com.antonio.glance.screens
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.VerticalPager
@@ -29,6 +30,10 @@ fun NewsVerticalPager(modifier: Modifier = Modifier) {
     VerticalPager(
         state = pagerState,
         modifier = modifier.fillMaxSize(),
+        beyondViewportPageCount = 1,
+        contentPadding = PaddingValues(
+            bottom = 120.dp
+        )
     ) { pageIndex ->
         Box(
             modifier = Modifier
