@@ -33,7 +33,11 @@ fun MyAppPortrait() {
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFEEEEEE)
+@Preview(name = "Bigger phone",
+    device = "id:pixel_3",
+    showBackground = true,
+    backgroundColor = 0xFFEEEEEE, showSystemUi = true
+)
 @Composable
 fun MyAppPortraitPreview() {
     GlanceTheme {
