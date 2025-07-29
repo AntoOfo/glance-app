@@ -20,6 +20,11 @@ import androidx.compose.ui.unit.dp
 import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
+fun SwipeDownIndicator(modifier: Modifier = Modifier) {
+
+}
+
+@Composable
 fun NewsVerticalPager(modifier: Modifier = Modifier) {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
@@ -57,5 +62,13 @@ fun NewsVerticalPager(modifier: Modifier = Modifier) {
 fun NewsVerticalPagerPreview() {
     GlanceTheme {
         NewsVerticalPager()
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF808080)
+@Composable
+fun SwipeDownIndicatorPreview() {
+    GlanceTheme {
+        SwipeDownIndicator()
     }
 }
