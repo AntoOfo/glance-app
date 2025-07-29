@@ -1,9 +1,11 @@
 package com.antonio.glance.screens
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -21,11 +23,22 @@ import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
 fun SwipeDownIndicator(modifier: Modifier = Modifier) {
-    Icon(
-        imageVector = Icons.Default.KeyboardArrowDown,
-        contentDescription = null,
-        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-    )
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Icon(
+            imageVector = Icons.Default.KeyboardArrowDown,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+        )
+        Icon(
+            imageVector = Icons.Default.KeyboardArrowDown,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+            modifier = Modifier.offset(y = (-16).dp)
+        )
+    }
 }
 
 @Composable
