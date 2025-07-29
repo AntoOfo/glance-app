@@ -21,7 +21,11 @@ import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
 fun SwipeDownIndicator(modifier: Modifier = Modifier) {
-
+    Icon(
+        imageVector = Icons.Default.KeyboardArrowDown,
+        contentDescription = null,
+        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+    )
 }
 
 @Composable
