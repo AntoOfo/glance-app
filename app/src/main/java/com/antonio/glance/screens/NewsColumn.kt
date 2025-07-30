@@ -23,6 +23,8 @@ fun NewsColumn(modifier: Modifier = Modifier) {
         ) {
             items(5) { index ->
                 NewsCard()
+
+
             }
         }
     }
