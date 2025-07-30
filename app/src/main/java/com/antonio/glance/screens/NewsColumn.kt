@@ -1,6 +1,7 @@
 package com.antonio.glance.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -24,10 +25,14 @@ fun NewsColumn(modifier: Modifier = Modifier) {
             modifier = modifier
         ) {
             items(5) { index ->
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                 NewsCard()
                 SwipeDownIndicator()
             }
-
+}
         }
     }
 }
