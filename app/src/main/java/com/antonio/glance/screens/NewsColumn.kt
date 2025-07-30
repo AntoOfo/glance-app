@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -19,13 +20,14 @@ fun NewsColumn(modifier: Modifier = Modifier) {
     ) {
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
         ) {
             items(5) { index ->
                 NewsCard()
-
-
+                SwipeDownIndicator()
             }
+
         }
     }
 }

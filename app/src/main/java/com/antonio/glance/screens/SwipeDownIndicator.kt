@@ -24,14 +24,14 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
         Icon(
             imageVector = Icons.Default.KeyboardArrowDown,
             contentDescription = "Arrow Done One",
-            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
             modifier = Modifier.size(24.dp)
         )
         Icon(
             imageVector = Icons.Default.KeyboardArrowDown,
             contentDescription = "Arrow Done Two",
-            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-            modifier = Modifier.offset(y = (-12).dp).size(24.dp)
+            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
+            modifier = Modifier.offset(y = (-16).dp).size(24.dp)
         )
     }
 }
