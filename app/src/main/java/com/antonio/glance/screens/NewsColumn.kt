@@ -26,11 +26,9 @@ fun NewsColumn(modifier: Modifier = Modifier) {
         ) {
             items(5) { index ->
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                 NewsCard()
-                SwipeDownIndicator()
             }
 }
         }
