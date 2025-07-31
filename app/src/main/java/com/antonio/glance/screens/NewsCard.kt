@@ -39,8 +39,7 @@ import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
-fun NewsCard(modifier: Modifier = Modifier,
-             maxHeight: Dp = Dp.Unspecified) {
+fun NewsCard(modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -54,7 +53,6 @@ fun NewsCard(modifier: Modifier = Modifier,
                 horizontalAlignment = Alignment.Start,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .then(if (maxHeight != Dp.Unspecified) Modifier.heightIn(max = maxHeight) else Modifier)
                     .padding(10.dp)
             ) {
                 Surface(
