@@ -36,7 +36,7 @@ fun MyAppPortrait() {
 }
 
 @Preview(name = "Bigger phone",
-    device = "id:pixel_8",
+    device = "id:pixel",
     showBackground = true,
     backgroundColor = 0xFFEEEEEE, showSystemUi = true
 )

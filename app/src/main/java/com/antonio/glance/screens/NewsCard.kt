@@ -50,10 +50,21 @@ fun NewsCard(modifier: Modifier = Modifier) {
         screenHeightDp > 600 -> 12.sp
         else -> 11.sp
     }
+    val labelLargeLine = when {
+        screenHeightDp > 800 -> 16.sp
+        screenHeightDp > 600 -> 14.sp
+        else -> 13.sp
+    }
+
     val titleLargeSize = when {
         screenHeightDp > 800 -> 16.sp
         screenHeightDp > 600 -> 13.sp
         else -> 12.sp
+    }
+    val titleLargeLine = when {
+        screenHeightDp > 800 -> 19.sp
+        screenHeightDp > 600 -> 16.sp
+        else -> 15.sp
     }
 
     val bodyMaxLines = when {
@@ -101,7 +112,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = "Guterres tells UN meeting that impunity, inequality, and other challenges risk engulfing the world",
-                    style = MaterialTheme.typography.titleLarge.copy(fontSize = titleLargeSize),
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = titleLargeSize, lineHeight = titleLargeLine),
                     modifier = Modifier
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -119,7 +130,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 Text(
                     // dummy bio
                     text = "The head of the United Nations warned gathered leaders Tuesday that impunity, inequality and uncertainty are driving modern civilisation toward \"a powder keg that risks engulfing the world\" - the latest clarion call from Antonio Guterres that the global situation is becoming intolerable and unsustainable.",
-                    style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize),
+                    style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize, lineHeight = labelLargeLine),
                     maxLines = bodyMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
