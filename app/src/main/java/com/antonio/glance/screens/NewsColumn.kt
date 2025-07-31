@@ -15,10 +15,6 @@ import com.antonio.glance.ui.theme.GlanceTheme
 @Composable
 fun NewsColumn(modifier: Modifier = Modifier) {
 
-    Surface(
-        shape = MaterialTheme.shapes.large,
-        color = MaterialTheme.colorScheme.surface
-    ) {
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -31,7 +27,7 @@ fun NewsColumn(modifier: Modifier = Modifier) {
                 NewsCard()
             }
 }
-        }
+
     }
 }
 

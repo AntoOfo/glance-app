@@ -19,7 +19,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
         SearchBar(Modifier.padding(horizontal = 16.dp))
 
-        //NewsVerticalPager()
+        NewsColumn(Modifier
+            .padding(horizontal = 12.dp)
+            .padding(top = 20.dp))
     }
 }
 
