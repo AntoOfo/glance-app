@@ -1,5 +1,6 @@
 package com.antonio.glance.screens
 
+import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,9 @@ fun NewsColumn(modifier: Modifier = Modifier) {
     // gives list of items for snappping
     val listState = rememberLazyListState()
     // snapping behaviour
-    val flingBehavior = rememberSnapFlingBehavior(lazyListState = listState)
+    val flingBehavior = rememberSnapFlingBehavior(
+        lazyListState = listState,
+        snapPosition = SnapPosition.Start)
 
         LazyColumn(
             state = listState,
