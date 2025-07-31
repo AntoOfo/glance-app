@@ -20,7 +20,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         SearchBar(Modifier.padding(horizontal = 16.dp))
 
         NewsColumn(Modifier
-            .padding(horizontal = 12.dp)
+            .padding(horizontal = 18.dp)
             .padding(top = 20.dp))
     }
 }
