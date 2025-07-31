@@ -56,6 +56,12 @@ fun NewsCard(modifier: Modifier = Modifier) {
         else -> 12.sp
     }
 
+    val bodyMaxLines = when {
+        screenHeightDp > 800 -> 9
+        screenHeightDp > 600 -> 4
+        else -> 3
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -114,7 +120,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
                     // dummy bio
                     text = "The head of the United Nations warned gathered leaders Tuesday that impunity, inequality and uncertainty are driving modern civilisation toward \"a powder keg that risks engulfing the world\" - the latest clarion call from Antonio Guterres that the global situation is becoming intolerable and unsustainable.",
                     style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize),
-                    maxLines = 5,
+                    maxLines = bodyMaxLines,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .alpha(0.7f)
