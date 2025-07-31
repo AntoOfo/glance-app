@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -40,6 +41,21 @@ import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
 fun NewsCard(modifier: Modifier = Modifier) {
+
+    val configuration = LocalConfiguration.current
+    val screenHeightDp = configuration.screenHeightDp
+
+    val labelLargeSize = when {
+        screenHeightDp > 800 -> 14.sp
+        screenHeightDp > 600 -> 12.sp
+        else -> 11.sp
+    }
+    val titleLargeSize = when {
+        screenHeightDp > 800 -> 16.sp
+        screenHeightDp > 600 -> 13.sp
+        else -> 12.sp
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -72,14 +88,14 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(9.dp))
                 Text(
                     text = "BBC News - 3h ago",   // dummy title
-                    style = MaterialTheme.typography.labelLarge,
+                    style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize),
                     modifier = Modifier
                         .alpha(0.8f)
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = "Guterres tells UN meeting that impunity, inequality, and other challenges risk engulfing the world",
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = titleLargeSize),
                     modifier = Modifier
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -97,7 +113,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
                 Text(
                     // dummy bio
                     text = "The head of the United Nations warned gathered leaders Tuesday that impunity, inequality and uncertainty are driving modern civilisation toward \"a powder keg that risks engulfing the world\" - the latest clarion call from Antonio Guterres that the global situation is becoming intolerable and unsustainable.",
-                    style = MaterialTheme.typography.labelLarge,
+                    style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize),
                     maxLines = 5,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
