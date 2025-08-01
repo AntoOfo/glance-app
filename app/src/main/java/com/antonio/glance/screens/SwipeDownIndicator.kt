@@ -3,6 +3,7 @@ package com.antonio.glance.screens
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
@@ -48,6 +49,11 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
         )
     )
 
+    val alpha by animateFloatAsState(
+        targetValue = if (show) 0.3f else 0f,
+        animationSpec = tween(300)
+    )
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -57,7 +63,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Done One",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlphaTop),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha * animatedAlphaTop),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .offset(y = (2).dp)
@@ -66,7 +72,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Done Two",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlphaBottom),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha * animatedAlphaBottom),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .offset(y = (-4).dp)
