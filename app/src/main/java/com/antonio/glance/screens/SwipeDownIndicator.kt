@@ -29,11 +29,19 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
     // compose thing for repeating animations
     val infiniteTransition = rememberInfiniteTransition()
 
-    val animatedAlpha by infiniteTransition.animateFloat(
+    val animatedAlphaTop by infiniteTransition.animateFloat(
         initialValue = 0.3f,
-        targetValue = 0.1f,
+        targetValue = 0.2f,
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 1000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+    val animatedAlphaBottom by infiniteTransition.animateFloat(
+        initialValue = 0.3f,
+        targetValue = 0.2f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 900, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         )
     )
@@ -47,7 +55,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Done One",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlpha),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlphaTop),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .offset(y = (2).dp)
@@ -56,7 +64,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Done Two",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlpha),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlphaBottom),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .offset(y = (-4).dp)
