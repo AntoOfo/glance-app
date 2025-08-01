@@ -1,9 +1,16 @@
 package com.antonio.glance.screens
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
+import androidx.compose.runtime.getValue
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -19,6 +26,18 @@ import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
 fun SwipeDownIndicator(modifier: Modifier = Modifier) {
+    // compose thing for repeating animations
+    val infiniteTransition = rememberInfiniteTransition()
+
+    val animatedAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.3f,
+        targetValue = 0.1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 1000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -28,7 +47,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Done One",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlpha),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .offset(y = (2).dp)
@@ -37,7 +56,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Done Two",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = animatedAlpha),
                 modifier = Modifier
                     .align(Alignment.Center)
                     .offset(y = (-4).dp)
