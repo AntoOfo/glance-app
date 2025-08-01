@@ -32,7 +32,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
 
     // top icon animation
     val animatedAlphaTop by infiniteTransition.animateFloat(
-        initialValue = 0.3f,
+        initialValue = 1.0f,
         targetValue = 0.2f,
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 1000, easing = LinearEasing),
@@ -41,7 +41,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
     )
     // bottom icon animation
     val animatedAlphaBottom by infiniteTransition.animateFloat(
-        initialValue = 0.3f,
+        initialValue = 1.0f,
         targetValue = 0.2f,
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 900, easing = LinearEasing),
