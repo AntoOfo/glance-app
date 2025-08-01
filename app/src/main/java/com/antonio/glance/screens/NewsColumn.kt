@@ -22,7 +22,7 @@ fun NewsColumn(modifier: Modifier = Modifier) {
     // snapping behaviour
     val flingBehavior = rememberSnapFlingBehavior(
         lazyListState = listState,
-        snapPosition = SnapPosition.Start)
+        snapPosition = SnapPosition.Start)  // snaps to top of column
 
         LazyColumn(
             state = listState,
@@ -31,7 +31,7 @@ fun NewsColumn(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
         ) {
-            items(5) { index ->
+            items(5) { index ->   // dummy amount for now
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {

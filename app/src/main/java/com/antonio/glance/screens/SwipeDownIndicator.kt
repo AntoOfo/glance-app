@@ -25,10 +25,11 @@ import androidx.compose.ui.unit.dp
 import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
-fun SwipeDownIndicator(modifier: Modifier = Modifier) {
+fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
     // compose thing for repeating animations
     val infiniteTransition = rememberInfiniteTransition()
 
+    // top icon animation
     val animatedAlphaTop by infiniteTransition.animateFloat(
         initialValue = 0.3f,
         targetValue = 0.2f,
@@ -37,6 +38,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
             repeatMode = RepeatMode.Reverse
         )
     )
+    // bottom icon animation
     val animatedAlphaBottom by infiniteTransition.animateFloat(
         initialValue = 0.3f,
         targetValue = 0.2f,
@@ -78,6 +80,9 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier) {
 @Composable
 fun SwipeDownIndicatorPreview() {
     GlanceTheme {
-        SwipeDownIndicator()
+        SwipeDownIndicator(
+            modifier = TODO(),
+            show = TODO()
+        )
     }
 }

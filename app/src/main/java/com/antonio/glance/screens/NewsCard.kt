@@ -45,11 +45,13 @@ fun NewsCard(modifier: Modifier = Modifier) {
     val configuration = LocalConfiguration.current
     val screenHeightDp = configuration.screenHeightDp
 
+    // flexible font sizing
     val labelLargeSize = when {
         screenHeightDp > 800 -> 14.sp
         screenHeightDp > 600 -> 12.sp
         else -> 11.sp
     }
+    // flexible line height sizing
     val labelLargeLine = when {
         screenHeightDp > 800 -> 16.sp
         screenHeightDp > 600 -> 14.sp
@@ -67,6 +69,7 @@ fun NewsCard(modifier: Modifier = Modifier) {
         else -> 15.sp
     }
 
+    // flexible max lines
     val bodyMaxLines = when {
         screenHeightDp > 800 -> 9
         screenHeightDp > 600 -> 4

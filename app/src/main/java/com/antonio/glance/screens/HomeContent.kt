@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antonio.glance.ui.theme.GlanceTheme
 
+// homescreen ui w/o navbar
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
 
@@ -25,6 +26,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     }
 }
 
+// portrait ui w navbar / dk if ill do landscape
 @Composable
 fun MyAppPortrait() {
     GlanceTheme {
