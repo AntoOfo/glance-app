@@ -51,7 +51,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
 
     val alpha by animateFloatAsState(
         targetValue = if (show) 0.3f else 0f,
-        animationSpec = tween(300)
+        animationSpec = tween(800)
     )
 
     Column(

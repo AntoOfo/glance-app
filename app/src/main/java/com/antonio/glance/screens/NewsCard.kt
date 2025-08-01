@@ -40,7 +40,7 @@ import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
-fun NewsCard(modifier: Modifier = Modifier) {
+fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
 
     val configuration = LocalConfiguration.current
     val screenHeightDp = configuration.screenHeightDp
@@ -159,7 +159,9 @@ fun NewsCard(modifier: Modifier = Modifier) {
             }
         }
         Spacer(modifier = Modifier.height(24.dp))
-        SwipeDownIndicator()
+        SwipeDownIndicator(
+            show = showIndicator
+        )
     }
 }
 
@@ -167,6 +169,9 @@ fun NewsCard(modifier: Modifier = Modifier) {
 @Composable
 fun NewsCardPreview() {
     GlanceTheme {
-        NewsCard()
+        NewsCard(
+            modifier = TODO(),
+            showIndicator = TODO()
+        )
     }
 }
