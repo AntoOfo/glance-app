@@ -41,11 +41,6 @@ fun NewsColumn(modifier: Modifier = Modifier) {
             showIndicator = false
             lastScrollTime = System.currentTimeMillis()
         } else {
-            // time left from 1500ms and scroll time
-            val timeDelay = 1200L - (System.currentTimeMillis() - lastScrollTime)
-            if (timeDelay > 0) {
-                delay(timeDelay)
-            }
             showIndicator = true
         }
     }
