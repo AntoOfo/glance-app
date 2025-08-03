@@ -31,20 +31,11 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
     val infiniteTransition = rememberInfiniteTransition()
 
     // top icon animation
-    val animatedAlphaTop by infiniteTransition.animateFloat(
+    val animatedAlpha by infiniteTransition.animateFloat(
         initialValue = 1.0f,
         targetValue = 0.2f,
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 1000, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        )
-    )
-    // bottom icon animation
-    val animatedAlphaBottom by infiniteTransition.animateFloat(
-        initialValue = 1.0f,
-        targetValue = 0.2f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 900, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         )
     )
@@ -54,32 +45,13 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
         animationSpec = tween(200)
     )
 
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Box(modifier = Modifier.size(28.dp)) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
-                contentDescription = "Arrow Done One",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha * animatedAlphaTop),
+                contentDescription = "Arrow Down",
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha * animatedAlpha),
                 modifier = Modifier
-                    .align(Alignment.Center)
-                    .offset(y = (2).dp)
                     .size(28.dp)
             )
-            Icon(
-                imageVector = Icons.Default.KeyboardArrowDown,
-                contentDescription = "Arrow Done Two",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha * animatedAlphaBottom),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .offset(y = (-4).dp)
-                    .size(28.dp)
-            )
-        }
-    }
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFF808080)
@@ -87,8 +59,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
 fun SwipeDownIndicatorPreview() {
     GlanceTheme {
         SwipeDownIndicator(
-            modifier = TODO(),
-            show = TODO()
+            show = true
         )
     }
 }
