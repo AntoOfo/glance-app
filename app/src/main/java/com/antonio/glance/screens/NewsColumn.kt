@@ -35,13 +35,29 @@ fun NewsColumn(modifier: Modifier = Modifier) {
     var showIndicator by remember { mutableStateOf(true) }
     var lastScrollTime by remember { mutableStateOf(0L) }
 
+    val lastIndex = 4  // dummy
+
     // detects scrolling
     LaunchedEffect(listState.isScrollInProgress) {
         if (listState.isScrollInProgress) {
             showIndicator = false
             lastScrollTime = System.currentTimeMillis()
         } else {
-            showIndicator = true
+            val visibleItems = listState.layoutInfo.visibleItemsInfo
+            val lastItem = visibleItems.find { it.index == lastIndex }
+
+            // if last item exists and is half the view
+            if (lastItem != null) {
+                val viewportHeight = listState.layoutInfo.viewportEndOffset
+                val itemVisibleHeight = (lastItem.size + lastItem.offset).coerceAtMost(viewportHeight) - lastItem.offset
+
+                val mostOfLastVisible = itemVisibleHeight > (lastItem.size / 2)
+
+                showIndicator = !mostOfLastVisible
+            } else {
+
+                showIndicator = true
+            }
         }
     }
 
