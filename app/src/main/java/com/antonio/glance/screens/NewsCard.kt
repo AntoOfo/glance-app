@@ -143,6 +143,13 @@ fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
                 Box(
                     modifier = Modifier.fillMaxWidth()
                 ) {
+                    Text(
+                        text = "Tap to read more",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .alpha(0.4f)
+                    )
                     IconButton(
                         onClick = {},
                         modifier = Modifier.align(Alignment.CenterEnd)
@@ -170,8 +177,7 @@ fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
 fun NewsCardPreview() {
     GlanceTheme {
         NewsCard(
-            modifier = TODO(),
-            showIndicator = TODO()
+            showIndicator = true
         )
     }
 }
