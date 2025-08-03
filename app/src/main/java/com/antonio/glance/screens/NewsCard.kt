@@ -82,7 +82,7 @@ fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
         Surface(
             shape = MaterialTheme.shapes.large,
             color = MaterialTheme.colorScheme.surface,
-            shadowElevation = 4.dp,
+            shadowElevation = 2.dp,
             modifier = modifier
         ) {
             Column(
