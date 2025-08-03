@@ -48,7 +48,7 @@ fun SearchBar(modifier: Modifier = Modifier){
                     style = MaterialTheme.typography.bodyLarge,
                     fontSize = 12.sp)
             },
-            shape = MaterialTheme.shapes.extraLarge,
+            shape = MaterialTheme.shapes.large,
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 56.dp)

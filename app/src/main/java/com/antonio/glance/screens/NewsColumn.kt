@@ -24,7 +24,7 @@ import kotlinx.coroutines.delay
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun NewsColumn(modifier: Modifier = Modifier) {
+fun NewsColumn(modifier: Modifier = Modifier, showImage: Boolean) {
     // gives list of items for snappping
     val listState = rememberLazyListState()
     // snapping behaviour
@@ -72,7 +72,11 @@ fun NewsColumn(modifier: Modifier = Modifier) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                NewsCard(showIndicator = showIndicator)
+                    if (showImage) {
+                        NewsCard(showIndicator = showIndicator, showImage = true)
+                    } else {
+                        NewsCard(showIndicator = showIndicator, showImage = false)
+                    }
             }
 }
 
@@ -83,6 +87,6 @@ fun NewsColumn(modifier: Modifier = Modifier) {
 @Composable
 fun NewsColumnPreview() {
     GlanceTheme {
-        NewsColumn()
+        NewsColumn(showImage = true)
     }
 }

@@ -40,7 +40,10 @@ import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
-fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
+fun NewsCard(
+    modifier: Modifier = Modifier,
+    showIndicator: Boolean,
+    showImage: Boolean) {
 
     val configuration = LocalConfiguration.current
     val screenHeightDp = configuration.screenHeightDp
@@ -102,7 +105,7 @@ fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(170.dp)
+                            .height(if (showImage) 170.dp else 0.dp)
                     )
                 }
                 Spacer(modifier = Modifier.height(9.dp))
@@ -177,7 +180,8 @@ fun NewsCard(modifier: Modifier = Modifier, showIndicator: Boolean) {
 fun NewsCardPreview() {
     GlanceTheme {
         NewsCard(
-            showIndicator = true
+            showIndicator = true,
+            showImage = true
         )
     }
 }
