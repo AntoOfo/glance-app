@@ -83,9 +83,12 @@ fun CategoryRow(modifier: Modifier = Modifier.fillMaxWidth()) {
     SingleChoiceSegmentedButtonRow {
         options.forEachIndexed { index, label ->
             SegmentedButton(
-                        shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
-                        onClick = { selectedIndex = index },
-                        selected = index == selectedIndex
+                shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
+                onClick = { selectedIndex = index },
+                selected = index == selectedIndex,
+                colors = SegmentedButtonDefaults.colors(
+                    activeContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f)
+                )
                     ) {
                         Text(label)
                     }
@@ -93,7 +96,7 @@ fun CategoryRow(modifier: Modifier = Modifier.fillMaxWidth()) {
         }
     }
 
-@Preview(showBackground = true, backgroundColor = 0xFF808080)
+@Preview(showBackground = true, backgroundColor = 0xFFEEEEEE)
 @Composable
 fun CategoryRowPreview() {
     GlanceTheme {
