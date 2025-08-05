@@ -9,12 +9,17 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,18 +74,24 @@ fun SearchBarPreview() {
     }
 }
 
+// searchbar replacement
 @Composable
-fun CategoryRow(modifier: Modifier = Modifier) {
+fun CategoryRow(modifier: Modifier = Modifier.fillMaxWidth()) {
+    var selectedIndex by remember { mutableStateOf(0) }
     val options = listOf("General", "Business", "Tech", "Sports")
 
     SingleChoiceSegmentedButtonRow {
         options.forEachIndexed { index, label ->
             SegmentedButton(
-
-            ) { }
+                        shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
+                        onClick = { selectedIndex = index },
+                        selected = index == selectedIndex
+                    ) {
+                        Text(label)
+                    }
+                }
         }
     }
-}
 
 @Preview(showBackground = true, backgroundColor = 0xFF808080)
 @Composable
