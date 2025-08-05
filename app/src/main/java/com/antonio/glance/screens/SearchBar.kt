@@ -1,12 +1,15 @@
 package com.antonio.glance.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -68,13 +71,14 @@ fun SearchBarPreview() {
 
 @Composable
 fun CategoryRow(modifier: Modifier = Modifier) {
-    Surface(
-        shape = MaterialTheme.shapes.large,
-        shadowElevation = 2.dp,
-        border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)),
-        modifier = modifier.fillMaxWidth()
-    ) {
+    val options = listOf("General", "Business", "Tech", "Sports")
 
+    SingleChoiceSegmentedButtonRow {
+        options.forEachIndexed { index, label ->
+            SegmentedButton(
+
+            ) { }
+        }
     }
 }
 
