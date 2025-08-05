@@ -22,7 +22,7 @@ fun HomeScreen(modifier: Modifier = Modifier, showImage: Boolean) {
     Column(modifier = modifier) {
         Spacer(Modifier.height(20.dp))
 
-        SearchBar(Modifier.padding(horizontal = 16.dp))
+        CategoryRow(Modifier.padding(horizontal = 20.dp))
 
         if (showImage) {
             NewsColumn(

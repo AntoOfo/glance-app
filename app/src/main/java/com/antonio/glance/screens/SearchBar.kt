@@ -76,11 +76,13 @@ fun SearchBarPreview() {
 
 // searchbar replacement
 @Composable
-fun CategoryRow(modifier: Modifier = Modifier.fillMaxWidth()) {
+fun CategoryRow(modifier: Modifier = Modifier) {
     var selectedIndex by remember { mutableStateOf(0) }
     val options = listOf("General", "Business", "Tech", "Sports")
 
-    SingleChoiceSegmentedButtonRow {
+    SingleChoiceSegmentedButtonRow(
+        modifier = modifier.fillMaxWidth()
+    ) {
         options.forEachIndexed { index, label ->
             SegmentedButton(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
