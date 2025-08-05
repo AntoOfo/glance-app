@@ -48,7 +48,7 @@ fun SwipeDownIndicator(modifier: Modifier = Modifier, show: Boolean) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Arrow Down",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha * animatedAlpha),
+                tint = MaterialTheme.colorScheme.secondary.copy(alpha = alpha * animatedAlpha),
                 modifier = Modifier
                     .size(28.dp)
             )
