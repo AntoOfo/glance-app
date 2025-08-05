@@ -1,5 +1,6 @@
 package com.antonio.glance.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material.icons.Icons
@@ -23,6 +24,7 @@ fun SearchBar(modifier: Modifier = Modifier){
     Surface(
         shape = MaterialTheme.shapes.large,
         shadowElevation = 2.dp,
+        border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)),
         modifier = modifier.fillMaxWidth()
     ) {
         TextField(
