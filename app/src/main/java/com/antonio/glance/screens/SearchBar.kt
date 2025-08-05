@@ -65,3 +65,23 @@ fun SearchBarPreview() {
         SearchBar()
     }
 }
+
+@Composable
+fun CategoryRow(modifier: Modifier = Modifier) {
+    Surface(
+        shape = MaterialTheme.shapes.large,
+        shadowElevation = 2.dp,
+        border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)),
+        modifier = modifier.fillMaxWidth()
+    ) {
+
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF808080)
+@Composable
+fun CategoryRowPreview() {
+    GlanceTheme {
+        CategoryRow()
+    }
+}
