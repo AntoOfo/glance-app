@@ -19,12 +19,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.antonio.glance.Article
 import com.antonio.glance.ui.theme.GlanceTheme
 import kotlinx.coroutines.delay
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun NewsColumn(modifier: Modifier = Modifier, showImage: Boolean) {
+fun NewsColumn(
+    modifier: Modifier = Modifier,
+    articles: List<Article>,
+    showImage: Boolean) {
     // gives list of items for snappping
     val listState = rememberLazyListState()
     // snapping behaviour
@@ -68,12 +72,21 @@ fun NewsColumn(modifier: Modifier = Modifier, showImage: Boolean) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
         ) {
-            items(5) { index ->   // dummy amount for now
+            items(articles.size) { index ->
+                val article = articles[index]
+                var visible by remember { mutableStateOf(false)}
+
+                LaunchedEffect(Unit) {
+                    visible = true
+                }
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     if (showImage) {
-                        NewsCard(showIndicator = showIndicator, showImage = true)
+                        NewsCard(
+                            showIndicator = showIndicator,
+                            // add fields tmrw
+                            showImage = true)
                     } else {
                         NewsCard(showIndicator = showIndicator, showImage = false)
                     }
