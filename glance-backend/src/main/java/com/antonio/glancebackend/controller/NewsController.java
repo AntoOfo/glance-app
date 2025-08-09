@@ -3,16 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.antonio.glancebackend.controller;
-import org.springframework.beans.factory.annotation.value;
-import org.springframwork.web.bind.annotation.GetMapping;
-import org.springframwork.web.bind.annotation.RequestParam;
-import org.springframwork.web.bind.annotation.RestController;
-import org.springframwork.web.reactive.function.client.WebClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 /**
  *
  * @author anton
  */
+@RestController
 public class NewsController {
+    
+    @Value("${gnews.api.key}")
+    private String apiKey;
     
 }
