@@ -8,4 +8,6 @@ object RetrofitInstance {
         .baseUrl("http://10.0.2.2:8080/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+    val newsGetter: NewsGetter = retrofit.create(NewsGetter::class.java)
 }
