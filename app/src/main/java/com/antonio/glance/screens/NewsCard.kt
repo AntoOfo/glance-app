@@ -43,6 +43,12 @@ import com.antonio.glance.ui.theme.GlanceTheme
 @Composable
 fun NewsCard(
     modifier: Modifier = Modifier,
+    //image: String,
+    source: String,
+    publishedAt: String,
+    title: String,
+    description: String,
+    //url: String,
     showIndicator: Boolean,
     showImage: Boolean) {
 
@@ -112,15 +118,17 @@ fun NewsCard(
                 }
                 Spacer(modifier = Modifier.height(9.dp))
                 Text(
-                    text = "BBC News - 3h ago",   // dummy title
+                    text = "${source} - ${publishedAt}",   // dummy title
                     style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize),
                     modifier = Modifier
                         .alpha(0.8f)
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "Guterres tells UN meeting that impunity, inequality, and other challenges risk engulfing the world",
+                    text = title,
                     style = MaterialTheme.typography.titleLarge.copy(fontSize = titleLargeSize, lineHeight = titleLargeLine),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -137,7 +145,7 @@ fun NewsCard(
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
                     // dummy bio
-                    text = "The head of the United Nations warned gathered leaders Tuesday that impunity, inequality and uncertainty are driving modern civilisation toward \"a powder keg that risks engulfing the world\" - the latest clarion call from Antonio Guterres that the global situation is becoming intolerable and unsustainable.",
+                    text = description,
                     style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize, lineHeight = labelLargeLine),
                     maxLines = bodyMaxLines,
                     overflow = TextOverflow.Ellipsis,
