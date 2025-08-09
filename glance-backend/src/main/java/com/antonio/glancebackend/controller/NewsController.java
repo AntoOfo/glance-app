@@ -20,4 +20,23 @@ public class NewsController {
     @Value("${gnews.api.key}")
     private String apiKey;
     
+    // webclient for http requests
+    private final WebClient webClient = WebClient.create();
+    
+    @GetMapping("/news/top-headlines")
+    public Mono<String> getNews(
+        @RequestParam(defaultValue = "general") String category) {
+        
+        String url = String.format(
+            "https://gnews.io/api/v4/top-headlines?category=%s&max=10&apikey=%s",
+                category, apiKey
+        );
+        
+        return webClient
+                .get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(String.class);
+    }
+    
 }
