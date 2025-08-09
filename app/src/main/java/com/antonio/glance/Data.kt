@@ -9,7 +9,7 @@ data class Article(
     val title: String,
     val description: String,
     val url: String,
-    val image: String?,
+    val image: String,
     val publishedAt: String,
     val source: Source
 )
