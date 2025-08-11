@@ -89,7 +89,9 @@ fun NewsColumn(
                             publishedAt = article.publishedAt,
                             title = article.title,
                             description = article.description,
-                            showImage = true)
+                            showImage = true,
+                            image = article.image
+                        )
                     } else {
                         NewsCard(
                             showIndicator = showIndicator,
@@ -97,7 +99,8 @@ fun NewsColumn(
                             publishedAt = article.publishedAt,
                             title = article.title,
                             description = article.description,
-                            showImage = false)
+                            showImage = false,
+                            image = article.image)
                     }
             }
 }
