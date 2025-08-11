@@ -37,13 +37,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 
 @Composable
 fun NewsCard(
     modifier: Modifier = Modifier,
-    //image: String,
+    image: String,
     source: String,
     publishedAt: String,
     title: String,
@@ -109,8 +110,8 @@ fun NewsCard(
                     modifier = modifier
                         .fillMaxWidth()
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.dummy_img),   // dummy img for now
+                    AsyncImage(
+                        model = image,   // dummy img for now
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
@@ -198,7 +199,8 @@ fun NewsCardPreview() {
             source = TODO(),
             publishedAt = TODO(),
             title = TODO(),
-            description = TODO()
+            description = TODO(),
+            image = TODO()
         )
     }
 }
