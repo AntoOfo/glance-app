@@ -83,8 +83,8 @@ fun SearchBarPreview() {
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CategoryRow(
-    onCategorySelected: (String) -> Unit,
-    modifier: Modifier = Modifier) {
+    modifier: Modifier = Modifier,
+    onCategorySelected: (String) -> Unit) {
 
     var selectedIndex by remember { mutableStateOf(0) }
     val options = listOf("General", "Business", "Tech", "Sports")

@@ -1,6 +1,8 @@
 package com.antonio.glance.screens
 
 import android.content.res.Configuration
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,22 +17,35 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.antonio.glance.ui.theme.GlanceTheme
+import com.antonio.glance.viewmodels.GlanceViewModel
 
 // homescreen ui w/o navbar
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier, showImage: Boolean) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    showImage: Boolean,
+    viewModel: GlanceViewModel) {
+
+    val articles = viewModel.articles
 
     Column(modifier = modifier) {
         Spacer(Modifier.height(20.dp))
 
-        CategoryRow(Modifier.padding(horizontal = 20.dp))
+        CategoryRow(
+            Modifier.padding(horizontal = 20.dp),
+            onCategorySelected = { category ->
+                viewModel.loadArticles(category)
+            })
 
         if (showImage) {
             NewsColumn(
                 Modifier
                     .padding(horizontal = 18.dp)
                     .padding(top = 20.dp),
+                articles = articles,
                 showImage = true
             )
         } else {
@@ -38,6 +53,7 @@ fun HomeScreen(modifier: Modifier = Modifier, showImage: Boolean) {
                 Modifier
                     .padding(horizontal = 18.dp)
                     .padding(top = 20.dp),
+                articles = articles,
                 showImage = false
             )
         }
@@ -45,19 +61,25 @@ fun HomeScreen(modifier: Modifier = Modifier, showImage: Boolean) {
 }
 
 // portrait ui w navbar / dk if ill do landscape
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyAppPortrait() {
+    val viewModel: GlanceViewModel = viewModel()
     GlanceTheme {
         Scaffold(bottomBar = { BottomNav() })
         { paddingValues ->
-            HomeScreen(modifier = Modifier.padding(paddingValues),
-                showImage = true)
+            HomeScreen(
+                modifier = Modifier.padding(paddingValues),
+                showImage = true,
+                viewModel = viewModel)
         }
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyAppLandscape() {
+    val viewModel: GlanceViewModel = viewModel()
     GlanceTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -65,12 +87,15 @@ fun MyAppLandscape() {
         ) {
             Row {
                 NavRail()
-                HomeScreen(showImage = false)
+                HomeScreen(
+                    showImage = false,
+                    viewModel = viewModel)
             }
         }
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyApp() {
     val configuration = LocalConfiguration.current
