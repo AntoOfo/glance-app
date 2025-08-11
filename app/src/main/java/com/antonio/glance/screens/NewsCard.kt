@@ -130,7 +130,7 @@ fun NewsCard(
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleLarge.copy(fontSize = titleLargeSize, lineHeight = titleLargeLine),
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                 )
