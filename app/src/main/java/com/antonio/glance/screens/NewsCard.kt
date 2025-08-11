@@ -79,12 +79,14 @@ fun NewsCard(
         else -> 15.sp
     }
 
+    // just gonna keep the max lines as 4
+
     // flexible max lines
-    val bodyMaxLines = when {
-        screenHeightDp > 800 -> 9
-        screenHeightDp > 600 -> 4
-        else -> 3
-    }
+    //val bodyMaxLines = when {
+    //    screenHeightDp > 800 -> 9
+    //    screenHeightDp > 600 -> 4
+    //    else -> 3
+   // }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -147,7 +149,7 @@ fun NewsCard(
                     // dummy bio
                     text = description,
                     style = MaterialTheme.typography.labelLarge.copy(fontSize = labelLargeSize, lineHeight = labelLargeLine),
-                    maxLines = bodyMaxLines,
+                    maxLines = 4,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .alpha(0.7f)
