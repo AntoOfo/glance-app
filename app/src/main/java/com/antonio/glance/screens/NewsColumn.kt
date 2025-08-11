@@ -85,10 +85,19 @@ fun NewsColumn(
                     if (showImage) {
                         NewsCard(
                             showIndicator = showIndicator,
-                            // add fields tmrw
+                            source = article.source.name,
+                            publishedAt = article.publishedAt,
+                            title = article.title,
+                            description = article.description,
                             showImage = true)
                     } else {
-                        NewsCard(showIndicator = showIndicator, showImage = false)
+                        NewsCard(
+                            showIndicator = showIndicator,
+                            source = article.source.name,
+                            publishedAt = article.publishedAt,
+                            title = article.title,
+                            description = article.description,
+                            showImage = false)
                     }
             }
 }
@@ -100,6 +109,10 @@ fun NewsColumn(
 @Composable
 fun NewsColumnPreview() {
     GlanceTheme {
-        NewsColumn(showImage = true)
+        NewsColumn(
+            showImage = true,
+            modifier = TODO(),
+            articles = TODO()
+        )
     }
 }
