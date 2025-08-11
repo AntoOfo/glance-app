@@ -83,7 +83,7 @@ fun SearchBarPreview() {
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CategoryRow(
-    viewModel: GlanceViewModel,
+    onCategorySelected: (String) -> Unit,
     modifier: Modifier = Modifier) {
 
     var selectedIndex by remember { mutableStateOf(0) }
@@ -97,7 +97,7 @@ fun CategoryRow(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                 onClick = {
                     selectedIndex = index
-                    viewModel.loadArticles(options[index])},    // loadarticles function w category
+                    onCategorySelected(label)},
 
                 selected = index == selectedIndex,
                 colors = SegmentedButtonDefaults.colors(
@@ -112,10 +112,14 @@ fun CategoryRow(
         }
     }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true, backgroundColor = 0xFFEEEEEE)
 @Composable
 fun CategoryRowPreview() {
     GlanceTheme {
-        CategoryRow()
+        CategoryRow(
+            viewModel = TODO(),
+            modifier = TODO()
+        )
     }
 }
