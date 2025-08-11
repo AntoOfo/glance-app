@@ -1,5 +1,7 @@
 package com.antonio.glance.screens
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.antonio.glance.ui.theme.GlanceTheme
+import com.antonio.glance.viewmodels.GlanceViewModel
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier){
@@ -77,8 +80,12 @@ fun SearchBarPreview() {
 }
 
 // searchbar replacement
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun CategoryRow(modifier: Modifier = Modifier) {
+fun CategoryRow(
+    viewModel: GlanceViewModel,
+    modifier: Modifier = Modifier) {
+
     var selectedIndex by remember { mutableStateOf(0) }
     val options = listOf("General", "Business", "Tech", "Sports")
 
@@ -88,7 +95,10 @@ fun CategoryRow(modifier: Modifier = Modifier) {
         options.forEachIndexed { index, label ->
             SegmentedButton(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
-                onClick = { selectedIndex = index },
+                onClick = {
+                    selectedIndex = index
+                    viewModel.loadArticles(options[index])},    // loadarticles function w category
+
                 selected = index == selectedIndex,
                 colors = SegmentedButtonDefaults.colors(
                     activeContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f),
