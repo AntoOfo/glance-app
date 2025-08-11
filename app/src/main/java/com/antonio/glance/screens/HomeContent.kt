@@ -108,6 +108,7 @@ fun MyApp() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(name = "Bigger phone",
     device = "id:pixel",
     showBackground = true,
@@ -119,6 +120,7 @@ fun MyAppPortraitPreview() {
         MyAppPortrait()
     }
 }
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(name = "Bigger phone",
     device = "spec:parent=pixel,orientation=landscape",
     showBackground = true,

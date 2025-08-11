@@ -118,8 +118,9 @@ fun CategoryRow(
 fun CategoryRowPreview() {
     GlanceTheme {
         CategoryRow(
-            viewModel = TODO(),
-            modifier = TODO()
+            //viewModel = TODO(),
+            modifier = TODO(),
+            onCategorySelected = TODO()
         )
     }
 }

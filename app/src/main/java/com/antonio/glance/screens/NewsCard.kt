@@ -191,7 +191,12 @@ fun NewsCardPreview() {
     GlanceTheme {
         NewsCard(
             showIndicator = true,
-            showImage = true
+            showImage = true,
+            modifier = TODO(),
+            source = TODO(),
+            publishedAt = TODO(),
+            title = TODO(),
+            description = TODO()
         )
     }
 }
