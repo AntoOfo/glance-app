@@ -97,8 +97,9 @@ fun CategoryRow(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                 onClick = {
                     selectedIndex = index
-                    onCategorySelected(label.lowercase())},
-
+                    val category = if (label == "Tech") "technology" else label.lowercase()
+                    onCategorySelected(category)
+                          },
                 selected = index == selectedIndex,
                 colors = SegmentedButtonDefaults.colors(
                     activeContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f),
