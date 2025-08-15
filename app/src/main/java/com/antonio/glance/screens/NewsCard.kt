@@ -1,7 +1,10 @@
 package com.antonio.glance.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -37,6 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
@@ -49,7 +54,7 @@ fun NewsCard(
     publishedAt: String,
     title: String,
     description: String,
-    //url: String,
+    url: String,
     showIndicator: Boolean,
     showImage: Boolean) {
 
@@ -88,6 +93,7 @@ fun NewsCard(
     //    screenHeightDp > 600 -> 4
     //    else -> 3
    // }
+    val context = LocalContext.current
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -98,6 +104,10 @@ fun NewsCard(
             border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)),
             shadowElevation = 2.dp,
             modifier = modifier
+                .clickable {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    context.startActivity(intent)
+                }
         ) {
             Column(
                 horizontalAlignment = Alignment.Start,
@@ -200,7 +210,8 @@ fun NewsCardPreview() {
             publishedAt = TODO(),
             title = TODO(),
             description = TODO(),
-            image = TODO()
+            image = TODO(),
+            url = TODO()
         )
     }
 }

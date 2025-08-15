@@ -90,7 +90,8 @@ fun NewsColumn(
                             title = article.title,
                             description = article.description,
                             showImage = true,
-                            image = article.image
+                            image = article.image,
+                            url = article.url
                         )
                     } else {
                         NewsCard(
@@ -100,7 +101,8 @@ fun NewsColumn(
                             title = article.title,
                             description = article.description,
                             showImage = false,
-                            image = article.image)
+                            image = article.image,
+                            url = article.url)
                     }
             }
 }
