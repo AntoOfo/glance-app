@@ -13,6 +13,9 @@ import kotlinx.coroutines.launch
 
 class GlanceViewModel() : ViewModel() {
 
+    var isLoadingNews by mutableStateOf(false)
+    private set
+
     // holds list of articles
     var articles by mutableStateOf<List<Article>>(emptyList())
         private set
@@ -21,12 +24,20 @@ class GlanceViewModel() : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadArticles(category: String) {
         viewModelScope.launch {
-            val response = RetrofitInstance.newsGetter.getNews(category)
+            try {
+                isLoadingNews = true
 
-            articles = response.articles.mapNotNull { articles ->
-                val timeAgo = getTimeAgo(articles.publishedAt)
-                articles.copy(publishedAt = timeAgo)   // return changed publishedAt field too
-            }
+                val response = RetrofitInstance.newsGetter.getNews(category)
+
+                articles = response.articles.mapNotNull { articles ->
+                    val timeAgo = getTimeAgo(articles.publishedAt)
+                    articles.copy(publishedAt = timeAgo)   // return changed publishedAt field too
+                }
+                isLoadingNews = false
+            } catch (e: Exception) {
+                isLoadingNews = false
+
+        }
         }
     }
 
