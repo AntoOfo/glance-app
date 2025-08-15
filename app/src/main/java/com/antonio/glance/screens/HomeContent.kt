@@ -3,17 +3,21 @@ package com.antonio.glance.screens
 import android.content.res.Configuration
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,6 +36,8 @@ fun HomeScreen(
 
     val articles = viewModel.articles
 
+    val isLoadingNews = viewModel.isLoadingNews
+
     LaunchedEffect(Unit) {
         viewModel.loadArticles("general")
     }
@@ -45,22 +51,51 @@ fun HomeScreen(
                 viewModel.loadArticles(category)
             })
 
-        if (showImage) {
-            NewsColumn(
-                Modifier
-                    .padding(horizontal = 18.dp)
-                    .padding(top = 20.dp),
-                articles = articles,
-                showImage = true
-            )
-        } else {
-            NewsColumn(
-                Modifier
-                    .padding(horizontal = 18.dp)
-                    .padding(top = 20.dp),
-                articles = articles,
-                showImage = false
-            )
+        when {
+            // loading news is true
+            isLoadingNews -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.padding(16.dp),
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                }
+            }
+
+            // if article list is empty
+            articles.isEmpty() -> {
+                Text(
+                    text = "No articles available.",
+                    style = MaterialTheme.typography.labelLarge,
+                    modifier = Modifier.padding(20.dp)
+                )
+            }
+
+            else -> {
+
+                if (showImage) {
+                    NewsColumn(
+                        Modifier
+                            .padding(horizontal = 18.dp)
+                            .padding(top = 20.dp),
+                        articles = articles,
+                        showImage = true
+                    )
+                } else {
+                    NewsColumn(
+                        Modifier
+                            .padding(horizontal = 18.dp)
+                            .padding(top = 20.dp),
+                        articles = articles,
+                        showImage = false
+                    )
+                }
+            }
         }
     }
 }
