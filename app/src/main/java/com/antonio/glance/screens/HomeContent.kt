@@ -20,8 +20,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.antonio.glance.ui.theme.GlanceTheme
 import com.antonio.glance.viewmodels.GlanceViewModel
@@ -69,11 +71,17 @@ fun HomeScreen(
 
             // if article list is empty
             articles.isEmpty() -> {
-                Text(
-                    text = "No articles available.",
-                    style = MaterialTheme.typography.labelLarge,
-                    modifier = Modifier.padding(20.dp)
-                )
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "No articles available.",
+                        style = MaterialTheme.typography.labelLarge,
+                        fontSize = 14.sp,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
 
             else -> {
