@@ -97,7 +97,7 @@ fun CategoryRow(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                 onClick = {
                     selectedIndex = index
-                    onCategorySelected(label)},
+                    onCategorySelected(label.lowercase())},
 
                 selected = index == selectedIndex,
                 colors = SegmentedButtonDefaults.colors(
