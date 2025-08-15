@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 
@@ -121,7 +122,11 @@ fun NewsCard(
                         .fillMaxWidth()
                 ) {
                     AsyncImage(
-                        model = image,   // dummy img for now
+                        model = ImageRequest.Builder(context)
+                            .data(image)
+                            .crossfade(true)
+                            .crossfade(300)
+                            .build(),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
