@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.LoadingIndicatorDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -29,6 +32,7 @@ import com.antonio.glance.ui.theme.GlanceTheme
 import com.antonio.glance.viewmodels.GlanceViewModel
 
 // homescreen ui w/o navbar
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(
@@ -62,8 +66,9 @@ fun HomeScreen(
                         .padding(16.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    CircularProgressIndicator(
+                    LoadingIndicator(
                         modifier = Modifier.padding(16.dp),
+                        polygons = LoadingIndicatorDefaults.IndeterminateIndicatorPolygons.take(4),
                         color = MaterialTheme.colorScheme.secondary
                     )
                 }
