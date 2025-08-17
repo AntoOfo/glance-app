@@ -131,7 +131,8 @@ fun NewsCard(
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(if (showImage) 170.dp else 0.dp)
+                            .height(if (showImage) 170.dp else 0.dp),
+                        placeholder = painterResource(R.drawable.placeholder)
                     )
                 }
                 Spacer(modifier = Modifier.height(9.dp))
