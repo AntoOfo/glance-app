@@ -28,7 +28,7 @@ public class NewsController {
         @RequestParam(defaultValue = "general") String category) {
         
         String url = String.format(
-            "https://gnews.io/api/v4/top-headlines?category=%s&max=10&lang=en&apikey=%s",
+            "https://gnews.io/api/v4/top-headlines?category=%s&lang=en&apikey=%s",
                 category, apiKey
         );
         
