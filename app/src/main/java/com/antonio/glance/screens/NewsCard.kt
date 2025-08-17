@@ -132,7 +132,8 @@ fun NewsCard(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(if (showImage) 170.dp else 0.dp),
-                        placeholder = painterResource(R.drawable.placeholder)
+                        placeholder = painterResource(R.drawable.placeholder),
+                        error = painterResource(R.drawable.errorimg)
                     )
                 }
                 Spacer(modifier = Modifier.height(9.dp))
