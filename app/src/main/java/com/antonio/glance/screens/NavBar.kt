@@ -1,5 +1,6 @@
 package com.antonio.glance.screens
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -23,47 +24,67 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
+import com.antonio.glance.viewmodels.GlanceViewModel
 
 @Composable
-fun BottomNav(modifier: Modifier = Modifier) {
+fun BottomNav(
+    viewModel: GlanceViewModel,
+    modifier: Modifier = Modifier
+    ) {
+
+    val showOnlyLiked = viewModel.showOnlyLiked
+
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
         modifier = modifier
     ) {
         NavigationBarItem(
-            selected = true,
             icon = {
-                Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = "Home",
-                    tint = MaterialTheme.colorScheme.secondary
-                )
+                Crossfade(targetState = !showOnlyLiked) { selected ->
+                    Icon(
+                        imageVector = Icons.Default.Home,
+                        contentDescription = "Home",
+                        tint = if (selected) MaterialTheme.colorScheme.secondary
+                        else MaterialTheme.colorScheme.onSurface
+                    )
+                }
             },
             label = {
                 Text(
                     "Home",
                     style = MaterialTheme.typography.labelLarge)
                     },
-            onClick = {},
+            selected = !showOnlyLiked,
+            onClick = {
+                if (showOnlyLiked) {
+                    viewModel.toggleShowOnlyLiked()
+                }
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = MaterialTheme.colorScheme.secondary,
                 selectedTextColor = MaterialTheme.colorScheme.secondary
             )
         )
         NavigationBarItem(
-            selected = false,
             icon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.bookmark_border),
-                    contentDescription = "Bookmark",
-                    tint = MaterialTheme.colorScheme.secondary
-                )
+                Crossfade(targetState = showOnlyLiked) { selected ->
+                    Icon(
+                        painter = painterResource(id = R.drawable.bookmark_border),
+                        contentDescription = "Bookmark",
+                        tint = MaterialTheme.colorScheme.secondary
+                    )
+                }
             },
             label = {
                 Text(
                     "Saved",
                     style = MaterialTheme.typography.labelLarge) },
-            onClick = {},
+            selected = showOnlyLiked,
+            onClick = {
+                if (!showOnlyLiked) {
+                    viewModel.toggleShowOnlyLiked()
+                }
+            },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = MaterialTheme.colorScheme.secondary,
                 selectedTextColor = MaterialTheme.colorScheme.secondary
