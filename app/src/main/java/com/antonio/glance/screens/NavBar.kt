@@ -173,7 +173,10 @@ fun NavRail(
 @Composable
 fun BottomNavPreview() {
     GlanceTheme {
-        BottomNav()
+        BottomNav(
+            viewModel = TODO(),
+            modifier = TODO()
+        )
     }
 }
 
@@ -181,6 +184,9 @@ fun BottomNavPreview() {
 @Composable
 fun NavRailPreview() {
     GlanceTheme {
-        NavRail()
+        NavRail(
+            viewModel = TODO(),
+            modifier = TODO()
+        )
     }
 }
