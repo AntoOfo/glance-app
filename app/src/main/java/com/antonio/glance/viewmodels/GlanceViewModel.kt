@@ -20,6 +20,13 @@ class GlanceViewModel() : ViewModel() {
     var articles by mutableStateOf<List<Article>>(emptyList())
         private set
 
+    var showOnlyLiked by mutableStateOf(false)
+        private set
+
+    fun toggleShowOnlyLiked() {
+        showOnlyLiked = !showOnlyLiked
+    }
+
     // load articles based on category
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadArticles(category: String) {
