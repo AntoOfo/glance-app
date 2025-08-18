@@ -71,7 +71,8 @@ fun BottomNav(
                     Icon(
                         painter = painterResource(id = R.drawable.bookmark_border),
                         contentDescription = "Bookmark",
-                        tint = MaterialTheme.colorScheme.secondary
+                        tint = if (selected) MaterialTheme.colorScheme.secondary
+                        else MaterialTheme.colorScheme.onSurface
                     )
                 }
             },
@@ -94,7 +95,12 @@ fun BottomNav(
 }
 
 @Composable
-fun NavRail(modifier: Modifier = Modifier) {
+fun NavRail(
+    viewModel: GlanceViewModel,
+    modifier: Modifier = Modifier) {
+
+    val showOnlyLiked = viewModel.showOnlyLiked
+
     NavigationRail(
         modifier = modifier.padding(start = 8.dp, end = 8.dp),
         containerColor = MaterialTheme.colorScheme.surface
@@ -106,39 +112,53 @@ fun NavRail(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             NavigationRailItem(
-                selected = true,
                 icon = {
-                    Icon(
-                        imageVector = Icons.Default.Home,
-                        contentDescription = "Home",
-                        tint = MaterialTheme.colorScheme.secondary
-                    )
+                    Crossfade(targetState = !showOnlyLiked) { selected ->
+                        Icon(
+                            imageVector = Icons.Default.Home,
+                            contentDescription = "Home",
+                            tint = if (selected) MaterialTheme.colorScheme.secondary
+                            else MaterialTheme.colorScheme.onSurface
+                        )
+                    }
                 },
                 label = {
                     Text(
                         "Home",
                         style = MaterialTheme.typography.labelLarge)
                 },
-                onClick = {},
+                selected = !showOnlyLiked,
+                onClick = {
+                    if (showOnlyLiked) {
+                        viewModel.toggleShowOnlyLiked()
+                    }
+                },
                 colors = NavigationRailItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.secondary,
                     selectedTextColor = MaterialTheme.colorScheme.secondary
                 )
             )
             NavigationRailItem(
-                selected = false,
                 icon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.bookmark_border),
-                        contentDescription = "Bookmark",
-                        tint = MaterialTheme.colorScheme.secondary
-                    )
+                    Crossfade(targetState = showOnlyLiked) { selected ->
+                        Icon(
+                            painter = painterResource(id = R.drawable.bookmark_border),
+                            contentDescription = "Bookmark",
+                            tint = if (selected) MaterialTheme.colorScheme.secondary
+                            else MaterialTheme.colorScheme.onSurface
+                        )
+                    }
                 },
                 label = {
                     Text(
                         "Saved",
                         style = MaterialTheme.typography.labelLarge) },
-                onClick = {},
+                selected = showOnlyLiked,
+                onClick = {
+                    if (!showOnlyLiked) {
+                        viewModel.toggleShowOnlyLiked()
+                    }
+                },
                 colors = NavigationRailItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.secondary,
                     selectedTextColor = MaterialTheme.colorScheme.secondary
