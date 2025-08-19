@@ -40,7 +40,17 @@ fun HomeScreen(
     showImage: Boolean,
     viewModel: GlanceViewModel) {
 
+    // from api
     val articles = viewModel.articles
+
+
+    val displayArticles = if (viewModel.showOnlyLiked) {
+        articles.filter { article ->
+            viewModel.savedArticles.any {it.url == article.url}
+        }
+    } else {
+        articles
+    }
 
     val isLoadingNews = viewModel.isLoadingNews
 

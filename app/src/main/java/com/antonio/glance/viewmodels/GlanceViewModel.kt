@@ -55,6 +55,7 @@ class GlanceViewModel @Inject constructor(
                 image = article.image ?: ""
             )
 
+            // if article is saved alrdy, delete otherwise inset
             if (savedArticles.any { it.url == entity.url }) {
                 dao.deleteArticle(entity)
             } else {
