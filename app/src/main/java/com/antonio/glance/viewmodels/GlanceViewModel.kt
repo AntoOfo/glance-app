@@ -46,6 +46,9 @@ class GlanceViewModel @Inject constructor(
         }
     }
 
+    var currentCategory by mutableStateOf("general")
+    private set
+
     fun toggleSaveArticle(article: Article) {
         viewModelScope.launch {
             val entity = ArticleEntity(
@@ -70,6 +73,7 @@ class GlanceViewModel @Inject constructor(
     // load articles based on category
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadArticles(category: String) {
+        currentCategory = category
         viewModelScope.launch {
             try {
                 isLoadingNews = true

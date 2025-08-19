@@ -55,6 +55,11 @@ fun HomeScreen(
         articles
     }
 
+    // no articles message for each category
+    val noArticlesMsg = if (viewModel.showOnlyLiked) {
+        "No saved ${viewModel.}"
+    }
+
     val savedArticlesList = viewModel.savedArticles.map { entity ->
         Article(
             source = Source(entity.source),
