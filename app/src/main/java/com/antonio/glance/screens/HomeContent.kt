@@ -106,7 +106,11 @@ fun HomeScreen(
                         Modifier
                             .padding(horizontal = 18.dp)
                             .padding(top = 20.dp),
-                        articles = articles,
+                        articles = displayArticles,
+                        savedArticles = viewModel.savedArticles,
+                        onFavouriteToggle = { article ->
+                            viewModel.toggleSaveArticle(article)
+                        },
                         showImage = true
                     )
                 } else {
@@ -114,7 +118,11 @@ fun HomeScreen(
                         Modifier
                             .padding(horizontal = 18.dp)
                             .padding(top = 20.dp),
-                        articles = articles,
+                        articles = displayArticles,
+                        savedArticles = viewModel.savedArticles,
+                        onFavouriteToggle = { article ->
+                            viewModel.toggleSaveArticle(article)
+                        },
                         showImage = false
                     )
                 }

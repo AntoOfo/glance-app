@@ -57,7 +57,9 @@ fun NewsCard(
     description: String,
     url: String,
     showIndicator: Boolean,
-    showImage: Boolean) {
+    showImage: Boolean,
+    isSaved: Boolean,
+    onFavouriteToggle: () -> Unit) {
 
     val configuration = LocalConfiguration.current
     val screenHeightDp = configuration.screenHeightDp

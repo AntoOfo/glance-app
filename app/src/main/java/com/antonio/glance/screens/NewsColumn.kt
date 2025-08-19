@@ -28,6 +28,8 @@ import kotlinx.coroutines.delay
 fun NewsColumn(
     modifier: Modifier = Modifier,
     articles: List<Article>,
+    savedArticles: List<Article>,
+    onFavouriteToggle: (Article) -> Unit,
     showImage: Boolean) {
     // gives list of items for snappping
     val listState = rememberLazyListState()
@@ -82,6 +84,7 @@ fun NewsColumn(
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    val isSaved = savedArticles.any { it.url == article.url}
                     if (showImage) {
                         NewsCard(
                             showIndicator = showIndicator,
@@ -91,7 +94,9 @@ fun NewsColumn(
                             description = article.description,
                             showImage = true,
                             image = article.image,
-                            url = article.url
+                            url = article.url,
+                            isSaved = isSaved,
+                            onFavouriteToggle = { onFavouriteToggle(article)}
                         )
                     } else {
                         NewsCard(
@@ -102,7 +107,9 @@ fun NewsColumn(
                             description = article.description,
                             showImage = false,
                             image = article.image,
-                            url = article.url)
+                            url = article.url,
+                            isSaved = isSaved,
+                            onFavouriteToggle = { onFavouriteToggle(article)})
                     }
             }
 }
