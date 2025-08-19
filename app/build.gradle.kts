@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -56,8 +59,14 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("io.coil-kt:coil-compose:2.5.0")
-    implementation(libs.androidx.room.common.jvm)
-    implementation(libs.androidx.room.runtime.android)
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
