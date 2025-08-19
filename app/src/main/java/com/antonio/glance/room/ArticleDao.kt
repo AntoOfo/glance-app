@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ArticleDao {
     @Query("SELECT * FROM articles")
-    suspend fun getAllLiked(): Flow<List<ArticleEntity>>
+    fun getAllLiked(): Flow<List<ArticleEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertArticle(article: ArticleEntity)

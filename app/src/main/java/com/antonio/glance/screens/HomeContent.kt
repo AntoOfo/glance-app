@@ -27,7 +27,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.antonio.glance.Article
+import com.antonio.glance.Source
 import com.antonio.glance.ui.theme.GlanceTheme
 import com.antonio.glance.viewmodels.GlanceViewModel
 
@@ -50,6 +53,17 @@ fun HomeScreen(
         }
     } else {
         articles
+    }
+
+    val savedArticlesList = viewModel.savedArticles.map { entity ->
+        Article(
+            source = Source(entity.source),
+            title = entity.title,
+            description = entity.description,
+            url = entity.url,
+            image = entity.image,
+            publishedAt = entity.publishedAt
+        )
     }
 
     val isLoadingNews = viewModel.isLoadingNews
@@ -107,7 +121,7 @@ fun HomeScreen(
                             .padding(horizontal = 18.dp)
                             .padding(top = 20.dp),
                         articles = displayArticles,
-                        savedArticles = viewModel.savedArticles,
+                        savedArticles = savedArticlesList,
                         onFavouriteToggle = { article ->
                             viewModel.toggleSaveArticle(article)
                         },
@@ -119,7 +133,7 @@ fun HomeScreen(
                             .padding(horizontal = 18.dp)
                             .padding(top = 20.dp),
                         articles = displayArticles,
-                        savedArticles = viewModel.savedArticles,
+                        savedArticles = savedArticlesList,
                         onFavouriteToggle = { article ->
                             viewModel.toggleSaveArticle(article)
                         },
@@ -135,9 +149,9 @@ fun HomeScreen(
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyAppPortrait() {
-    val viewModel: GlanceViewModel = viewModel()
+    val viewModel: GlanceViewModel = hiltViewModel()
     GlanceTheme {
-        Scaffold(bottomBar = { BottomNav() })
+        Scaffold(bottomBar = { BottomNav(viewModel) })
         { paddingValues ->
             HomeScreen(
                 modifier = Modifier.padding(paddingValues),
@@ -150,14 +164,14 @@ fun MyAppPortrait() {
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyAppLandscape() {
-    val viewModel: GlanceViewModel = viewModel()
+    val viewModel: GlanceViewModel = hiltViewModel()
     GlanceTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
             Row {
-                NavRail()
+                NavRail(viewModel)
                 HomeScreen(
                     showImage = false,
                     viewModel = viewModel)

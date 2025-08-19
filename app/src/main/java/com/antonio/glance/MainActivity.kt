@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import com.antonio.glance.screens.MyApp
 import com.antonio.glance.ui.theme.GlanceTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

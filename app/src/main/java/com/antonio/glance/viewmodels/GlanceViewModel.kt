@@ -11,9 +11,11 @@ import com.antonio.glance.Article
 import com.antonio.glance.network.RetrofitInstance
 import com.antonio.glance.room.ArticleDao
 import com.antonio.glance.room.ArticleEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class GlanceViewModel @Inject constructor(
     private val dao: ArticleDao
 ) : ViewModel() {

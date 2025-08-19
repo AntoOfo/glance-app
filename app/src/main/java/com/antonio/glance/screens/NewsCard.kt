@@ -186,11 +186,12 @@ fun NewsCard(
                             .alpha(0.4f)
                     )
                     IconButton(
-                        onClick = {},
+                        onClick = onFavouriteToggle,
                         modifier = Modifier.align(Alignment.CenterEnd)
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.bookmark_border),
+                            painter = painterResource(
+                                id = if (isSaved) R.drawable.bookmark else R.drawable.bookmark_border),
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier
@@ -220,7 +221,9 @@ fun NewsCardPreview() {
             title = TODO(),
             description = TODO(),
             image = TODO(),
-            url = TODO()
+            url = TODO(),
+            isSaved = TODO(),
+            onFavouriteToggle = TODO()
         )
     }
 }

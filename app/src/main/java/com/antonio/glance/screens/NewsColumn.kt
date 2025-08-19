@@ -124,7 +124,9 @@ fun NewsColumnPreview() {
         NewsColumn(
             showImage = true,
             modifier = TODO(),
-            articles = TODO()
+            articles = TODO(),
+            savedArticles = TODO(),
+            onFavouriteToggle = TODO()
         )
     }
 }
