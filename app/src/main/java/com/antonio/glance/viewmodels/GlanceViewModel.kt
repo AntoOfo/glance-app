@@ -9,9 +9,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.antonio.glance.Article
 import com.antonio.glance.network.RetrofitInstance
+import com.antonio.glance.room.ArticleDao
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class GlanceViewModel() : ViewModel() {
+class GlanceViewModel @Inject constructor(
+    private val dao: ArticleDao
+) : ViewModel() {
 
     var isLoadingNews by mutableStateOf(false)
     private set
