@@ -55,11 +55,6 @@ fun HomeScreen(
         articles
     }
 
-    // no articles message for each category
-    val noArticlesMsg = if (viewModel.showOnlyLiked) {
-        "No saved ${viewModel.}"
-    }
-
     val savedArticlesList = viewModel.savedArticles.map { entity ->
         Article(
             source = Source(entity.source),
@@ -104,17 +99,26 @@ fun HomeScreen(
             }
 
             // if article list is empty
-            articles.isEmpty() -> {
+            displayArticles.isEmpty() -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "No articles available.",
-                        style = MaterialTheme.typography.labelLarge,
-                        fontSize = 14.sp,
-                        textAlign = TextAlign.Center
-                    )
+                    if (viewModel.showOnlyLiked) {
+                        Text(
+                            text = "No saved ${viewModel.currentCategory} articles.",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    } else {
+                        Text(
+                            text = "No ${viewModel.currentCategory} articles available.",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
             }
 
