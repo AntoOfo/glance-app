@@ -10,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.antonio.glance.Article
 import com.antonio.glance.network.RetrofitInstance
 import com.antonio.glance.room.ArticleDao
+import com.antonio.glance.room.ArticleEntity
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,7 +21,7 @@ class GlanceViewModel @Inject constructor(
     var isLoadingNews by mutableStateOf(false)
     private set
 
-    // holds list of articles
+    // holds list of articles via api
     var articles by mutableStateOf<List<Article>>(emptyList())
         private set
 
@@ -29,6 +30,37 @@ class GlanceViewModel @Inject constructor(
 
     fun toggleShowOnlyLiked() {
         showOnlyLiked = !showOnlyLiked
+    }
+
+    // offline list of saved
+    var savedArticles by mutableStateOf<List<ArticleEntity>>(emptyList())
+    private set
+
+    init {
+        viewModelScope.launch {
+            dao.getAllLiked().collect { list ->
+                savedArticles = list
+            }
+        }
+    }
+
+    fun toggleSaveArticle(article: Article) {
+        viewModelScope.launch {
+            val entity = ArticleEntity(
+                url = article.url,
+                source = article.source.name,
+                publishedAt = article.publishedAt,
+                title = article.title,
+                description = article.description ?: "",
+                image = article.image ?: ""
+            )
+
+            if (savedArticles.any { it.url == entity.url }) {
+                dao.deleteArticle(entity)
+            } else {
+                dao.insertArticle(entity)
+            }
+        }
     }
 
 
