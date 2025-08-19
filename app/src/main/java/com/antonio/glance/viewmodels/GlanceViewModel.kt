@@ -27,6 +27,7 @@ class GlanceViewModel() : ViewModel() {
         showOnlyLiked = !showOnlyLiked
     }
 
+
     // load articles based on category
     @RequiresApi(Build.VERSION_CODES.O)
     fun loadArticles(category: String) {
