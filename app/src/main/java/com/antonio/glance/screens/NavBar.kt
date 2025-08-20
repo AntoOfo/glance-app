@@ -45,7 +45,7 @@ fun BottomNav(
                         painter = if (selected) painterResource(id = R.drawable.home)
                         else painterResource(id = R.drawable.home_border),
                         contentDescription = "Home",
-                        tint = MaterialTheme.colorScheme.secondary
+                        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
                 }
             },
@@ -61,8 +61,8 @@ fun BottomNav(
                 }
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = MaterialTheme.colorScheme.secondary,
-                selectedTextColor = MaterialTheme.colorScheme.secondary
+                selectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                selectedTextColor = MaterialTheme.colorScheme.onSurface
             )
         )
         NavigationBarItem(
@@ -72,7 +72,7 @@ fun BottomNav(
                         painter = if (selected) painterResource(id = R.drawable.bookmark)
                         else painterResource(id = R.drawable.bookmark_border),
                         contentDescription = "Bookmark",
-                        tint = MaterialTheme.colorScheme.secondary
+                        tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
                 }
             },
@@ -87,8 +87,8 @@ fun BottomNav(
                 }
             },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = MaterialTheme.colorScheme.secondary,
-                selectedTextColor = MaterialTheme.colorScheme.secondary
+                selectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                selectedTextColor = MaterialTheme.colorScheme.onSurface
             )
         )
     }
@@ -118,7 +118,7 @@ fun NavRail(
                             painter = if (selected) painterResource(id = R.drawable.home)
                             else painterResource(id = R.drawable.home_border),
                             contentDescription = "Home",
-                            tint = MaterialTheme.colorScheme.secondary
+                            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                         )
                     }
                 },
@@ -134,8 +134,8 @@ fun NavRail(
                     }
                 },
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.secondary,
-                    selectedTextColor = MaterialTheme.colorScheme.secondary
+                    selectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                    selectedTextColor = MaterialTheme.colorScheme.onSurface
                 )
             )
             NavigationRailItem(
@@ -145,7 +145,7 @@ fun NavRail(
                             painter = if (selected) painterResource(id = R.drawable.bookmark)
                             else painterResource(id = R.drawable.bookmark_border),
                             contentDescription = "Bookmark",
-                            tint = MaterialTheme.colorScheme.secondary
+                            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                         )
                     }
                 },
@@ -160,8 +160,8 @@ fun NavRail(
                     }
                 },
                 colors = NavigationRailItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.secondary,
-                    selectedTextColor = MaterialTheme.colorScheme.secondary
+                    selectedIconColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                    selectedTextColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
