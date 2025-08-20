@@ -42,10 +42,10 @@ fun BottomNav(
             icon = {
                 Crossfade(targetState = !showOnlyLiked) { selected ->
                     Icon(
-                        imageVector = Icons.Default.Home,
+                        painter = if (selected) painterResource(id = R.drawable.home)
+                        else painterResource(id = R.drawable.home_border),
                         contentDescription = "Home",
-                        tint = if (selected) MaterialTheme.colorScheme.secondary
-                        else MaterialTheme.colorScheme.onSurface
+                        tint = MaterialTheme.colorScheme.secondary
                     )
                 }
             },
@@ -69,10 +69,10 @@ fun BottomNav(
             icon = {
                 Crossfade(targetState = showOnlyLiked) { selected ->
                     Icon(
-                        painter = painterResource(id = R.drawable.bookmark_border),
+                        painter = if (selected) painterResource(id = R.drawable.bookmark)
+                        else painterResource(id = R.drawable.bookmark_border),
                         contentDescription = "Bookmark",
-                        tint = if (selected) MaterialTheme.colorScheme.secondary
-                        else MaterialTheme.colorScheme.onSurface
+                        tint = MaterialTheme.colorScheme.secondary
                     )
                 }
             },
