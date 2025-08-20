@@ -93,7 +93,7 @@ fun HomeScreen(
                     LoadingIndicator(
                         modifier = Modifier.padding(16.dp),
                         polygons = LoadingIndicatorDefaults.IndeterminateIndicatorPolygons.take(4),
-                        color = MaterialTheme.colorScheme.secondary
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
                 }
             }
