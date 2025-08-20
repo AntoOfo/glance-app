@@ -105,7 +105,6 @@ fun NewsCard(
             shape = MaterialTheme.shapes.large,
             color = MaterialTheme.colorScheme.surface,
             border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)),
-            shadowElevation = 2.dp,
             modifier = modifier
                 .clickable {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
