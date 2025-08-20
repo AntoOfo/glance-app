@@ -104,7 +104,8 @@ fun NewsCard(
         Surface(
             shape = MaterialTheme.shapes.large,
             color = MaterialTheme.colorScheme.surface,
-            border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)),
+            border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)),
+            shadowElevation = 0.5.dp,
             modifier = modifier
                 .clickable {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -192,7 +193,7 @@ fun NewsCard(
                             painter = painterResource(
                                 id = if (isSaved) R.drawable.bookmark else R.drawable.bookmark_border),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.secondary,
+                            tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                             modifier = Modifier
                                 .size(24.dp)
                         )

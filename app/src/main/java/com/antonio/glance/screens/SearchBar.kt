@@ -102,9 +102,9 @@ fun CategoryRow(
                           },
                 selected = index == selectedIndex,
                 colors = SegmentedButtonDefaults.colors(
-                    activeContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f),
-                    inactiveBorderColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f),
-                    activeBorderColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f)
+                    activeContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                    inactiveBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                    activeBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
                 )
                     ) {
                         Text(label)
