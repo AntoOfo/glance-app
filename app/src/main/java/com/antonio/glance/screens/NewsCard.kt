@@ -111,6 +111,7 @@ fun NewsCard(
             shadowElevation = 0.5.dp,
             modifier = modifier
                 .clickable {
+                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                     context.startActivity(intent)
                 }
