@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -17,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antonio.glance.Article
@@ -66,13 +68,18 @@ fun NewsColumn(
             }
         }
     }
-
+    val clipShape = RoundedCornerShape(
+        topStart = 15.dp,
+        topEnd = 15.dp,
+        bottomStart = 0.dp,
+        bottomEnd = 0.dp
+    )
         LazyColumn(
             state = listState,
             flingBehavior = flingBehavior,
             verticalArrangement = Arrangement.spacedBy(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
+            modifier = modifier.clip(clipShape)
         ) {
             items(articles.size) { index ->
                 val article = articles[index]
