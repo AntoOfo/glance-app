@@ -30,6 +30,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -54,6 +56,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
+import kotlinx.coroutines.delay
 
 @Composable
 fun NewsCard(
@@ -108,12 +111,23 @@ fun NewsCard(
     val haptic = LocalHapticFeedback.current
 
     var trackAnim by remember { mutableStateOf(false) }
+    var onLaunch by remember { mutableStateOf(true) }
 
     val scale by animateFloatAsState(
         targetValue = if (trackAnim) 1.4f else 1f,
         animationSpec = tween(durationMillis = 150),
         label = "bookmarkScale"
     )
+
+    LaunchedEffect(isSaved) {
+        if (onLaunch) {
+            onLaunch = false  // just so anim doesnt happen on its own on launch
+            return@LaunchedEffect
+        }
+        trackAnim = true
+        delay(80)
+        trackAnim = false
+    }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -208,7 +222,9 @@ fun NewsCard(
                             haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                             onFavouriteToggle()
                                   },
-                        modifier = Modifier.align(Alignment.CenterEnd)
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd)
+                            .graphicsLayer(scaleX = scale, scaleY = scale)
                     ) {
                         Icon(
                             painter = painterResource(
