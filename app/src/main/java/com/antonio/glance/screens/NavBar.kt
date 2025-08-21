@@ -19,6 +19,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,6 +35,7 @@ fun BottomNav(
     ) {
 
     val showOnlyLiked = viewModel.showOnlyLiked
+    val haptic = LocalHapticFeedback.current
 
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
@@ -56,6 +59,7 @@ fun BottomNav(
                     },
             selected = !showOnlyLiked,
             onClick = {
+                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 if (showOnlyLiked) {
                     viewModel.toggleShowOnlyLiked()
                 }
@@ -82,6 +86,7 @@ fun BottomNav(
                     style = MaterialTheme.typography.labelLarge) },
             selected = showOnlyLiked,
             onClick = {
+                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 if (!showOnlyLiked) {
                     viewModel.toggleShowOnlyLiked()
                 }
@@ -100,6 +105,7 @@ fun NavRail(
     modifier: Modifier = Modifier) {
 
     val showOnlyLiked = viewModel.showOnlyLiked
+    val haptic = LocalHapticFeedback.current
 
     NavigationRail(
         modifier = modifier.padding(start = 8.dp, end = 8.dp),
@@ -129,6 +135,7 @@ fun NavRail(
                 },
                 selected = !showOnlyLiked,
                 onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     if (showOnlyLiked) {
                         viewModel.toggleShowOnlyLiked()
                     }
@@ -155,6 +162,7 @@ fun NavRail(
                         style = MaterialTheme.typography.labelLarge) },
                 selected = showOnlyLiked,
                 onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     if (!showOnlyLiked) {
                         viewModel.toggleShowOnlyLiked()
                     }

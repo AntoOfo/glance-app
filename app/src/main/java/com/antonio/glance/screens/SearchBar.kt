@@ -26,6 +26,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -86,6 +88,7 @@ fun CategoryRow(
     modifier: Modifier = Modifier,
     onCategorySelected: (String) -> Unit) {
 
+    val haptic = LocalHapticFeedback.current
     var selectedIndex by remember { mutableStateOf(0) }
     val options = listOf("General", "Business", "Tech", "Sports")
 
@@ -96,6 +99,7 @@ fun CategoryRow(
             SegmentedButton(
                 shape = SegmentedButtonDefaults.itemShape(index = index, count = options.size),
                 onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     selectedIndex = index
                     val category = if (label == "Tech") "technology" else label.lowercase()
                     onCategorySelected(category)
