@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
@@ -39,7 +40,7 @@ fun BottomNav(
 
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
-        modifier = modifier
+        modifier = modifier.shadow(elevation = 14.dp)
     ) {
         NavigationBarItem(
             icon = {
@@ -108,7 +109,9 @@ fun NavRail(
     val haptic = LocalHapticFeedback.current
 
     NavigationRail(
-        modifier = modifier.padding(start = 8.dp, end = 8.dp),
+        modifier = modifier
+            .padding(start = 8.dp, end = 8.dp)
+            .shadow(elevation = 14.dp),
         containerColor = MaterialTheme.colorScheme.surface
     ) {
         Column(
