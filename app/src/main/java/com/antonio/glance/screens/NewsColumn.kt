@@ -1,6 +1,8 @@
 package com.antonio.glance.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
@@ -57,9 +59,6 @@ fun NewsColumn(
                 val article = articles[index]
                 var visible by remember { mutableStateOf(false)}
 
-                LaunchedEffect(Unit) {
-                    visible = true
-                }
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
