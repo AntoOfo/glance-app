@@ -40,34 +40,6 @@ fun NewsColumn(
         lazyListState = listState,
         snapPosition = SnapPosition.Start)  // snaps to top of column
 
-    var showIndicator by remember { mutableStateOf(true) }
-    var lastScrollTime by remember { mutableStateOf(0L) }
-
-    val lastIndex = 4  // dummy
-
-    // detects scrolling
-    LaunchedEffect(listState.isScrollInProgress) {
-        if (listState.isScrollInProgress) {
-            showIndicator = false
-            lastScrollTime = System.currentTimeMillis()
-        } else {
-            val visibleItems = listState.layoutInfo.visibleItemsInfo
-            val lastItem = visibleItems.find { it.index == lastIndex }
-
-            // if last item exists and is half the view
-            if (lastItem != null) {
-                val viewportHeight = listState.layoutInfo.viewportEndOffset
-                val itemVisibleHeight = (lastItem.size + lastItem.offset).coerceAtMost(viewportHeight) - lastItem.offset
-
-                val mostOfLastVisible = itemVisibleHeight > (lastItem.size / 2)
-
-                showIndicator = !mostOfLastVisible
-            } else {
-
-                showIndicator = true
-            }
-        }
-    }
     val clipShape = RoundedCornerShape(
         topStart = 15.dp,
         topEnd = 15.dp,
@@ -94,7 +66,6 @@ fun NewsColumn(
                     val isSaved = savedArticles.any { it.url == article.url}
                     if (showImage) {
                         NewsCard(
-                            showIndicator = showIndicator,
                             source = article.source.name,
                             publishedAt = article.publishedAt,
                             title = article.title,
@@ -107,7 +78,6 @@ fun NewsColumn(
                         )
                     } else {
                         NewsCard(
-                            showIndicator = showIndicator,
                             source = article.source.name,
                             publishedAt = article.publishedAt,
                             title = article.title,

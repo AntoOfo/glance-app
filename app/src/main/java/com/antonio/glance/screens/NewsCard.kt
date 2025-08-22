@@ -69,7 +69,6 @@ fun NewsCard(
     title: String,
     description: String,
     url: String,
-    showIndicator: Boolean,
     showImage: Boolean,
     isSaved: Boolean,
     onFavouriteToggle: () -> Unit) {
@@ -256,9 +255,7 @@ fun NewsCard(
             }
         }
         Spacer(modifier = Modifier.height(24.dp))
-        SwipeDownIndicator(
-            show = showIndicator
-        )
+
     }
 }
 
@@ -267,7 +264,6 @@ fun NewsCard(
 fun NewsCardPreview() {
     GlanceTheme {
         NewsCard(
-            showIndicator = true,
             showImage = true,
             modifier = TODO(),
             source = TODO(),
