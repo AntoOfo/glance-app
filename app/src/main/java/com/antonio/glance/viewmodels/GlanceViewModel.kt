@@ -24,7 +24,7 @@ class GlanceViewModel @Inject constructor(
     private set
 
     // holds list of articles via api
-    var articles by mutableStateOf<List<Article>>(emptyList())
+    var articles by mutableStateOf<List<Article>?>(null)
         private set
 
     var showOnlyLiked by mutableStateOf(false)
@@ -87,6 +87,7 @@ class GlanceViewModel @Inject constructor(
                 isLoadingNews = false
             } catch (e: Exception) {
                 isLoadingNews = false
+                articles = emptyList()
 
         }
         }
