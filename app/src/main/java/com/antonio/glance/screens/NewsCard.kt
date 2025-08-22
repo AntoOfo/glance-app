@@ -34,6 +34,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -57,6 +58,7 @@ import coil.request.ImageRequest
 import com.antonio.glance.R
 import com.antonio.glance.ui.theme.GlanceTheme
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun NewsCard(
@@ -108,6 +110,7 @@ fun NewsCard(
     //    else -> 3
    // }
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     val haptic = LocalHapticFeedback.current
 
     var trackAnim by remember { mutableStateOf(false) }
@@ -129,6 +132,14 @@ fun NewsCard(
         trackAnim = false
     }
 
+    var cardClicked by remember { mutableStateOf(false) }
+
+    val cardScale by animateFloatAsState(
+        targetValue = if (cardClicked) 0.95f else 1f,
+        animationSpec = tween(durationMillis = 150),
+        label = "cardScale"
+    )
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -137,12 +148,18 @@ fun NewsCard(
             color = MaterialTheme.colorScheme.surface,
             border = BorderStroke(0.5.dp, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)),
             shadowElevation = 0.5.dp,
-            modifier = modifier
-                .clickable {
+            onClick = {
+                    cardClicked = true
+
+                    scope.launch {
+                        delay(150)
+                        cardClicked = false
+                    }
                     haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                     context.startActivity(intent)
-                }
+                },
+            modifier = modifier.graphicsLayer(scaleX = cardScale, scaleY = cardScale)
         ) {
             Column(
                 horizontalAlignment = Alignment.Start,
