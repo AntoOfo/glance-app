@@ -117,7 +117,7 @@ fun NewsCard(
     var onLaunch by remember { mutableStateOf(true) }
 
     val scale by animateFloatAsState(
-        targetValue = if (trackAnim) 1.4f else 1f,
+        targetValue = if (trackAnim) 0.85f else 1f,
         animationSpec = tween(durationMillis = 150),
         label = "bookmarkScale"
     )
@@ -135,8 +135,8 @@ fun NewsCard(
     var cardClicked by remember { mutableStateOf(false) }
 
     val cardScale by animateFloatAsState(
-        targetValue = if (cardClicked) 0.95f else 1f,
-        animationSpec = tween(durationMillis = 150),
+        targetValue = if (cardClicked) 0.99f else 1f,
+        animationSpec = tween(durationMillis = 140),
         label = "cardScale"
     )
 
