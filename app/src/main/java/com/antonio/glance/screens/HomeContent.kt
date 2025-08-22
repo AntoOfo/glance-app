@@ -99,7 +99,7 @@ fun HomeScreen(
             }
 
             // if article list is empty
-            displayArticles.isEmpty() -> {
+            !isLoadingNews && displayArticles.isEmpty() -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
