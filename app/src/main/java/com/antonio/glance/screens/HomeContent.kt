@@ -48,11 +48,11 @@ fun HomeScreen(
 
 
     val displayArticles = if (viewModel.showOnlyLiked) {
-        articles.filter { article ->
+        articles?.filter { article ->
             viewModel.savedArticles.any {it.url == article.url}
-        }
+        } ?: emptyList()
     } else {
-        articles
+        articles ?: emptyList()
     }
 
     val savedArticlesList = viewModel.savedArticles.map { entity ->
@@ -83,7 +83,7 @@ fun HomeScreen(
 
         when {
             // loading news is true
-            isLoadingNews -> {
+            isLoadingNews || articles == null -> {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
@@ -99,7 +99,7 @@ fun HomeScreen(
             }
 
             // if article list is empty
-            !isLoadingNews && displayArticles.isEmpty() -> {
+            displayArticles.isEmpty() -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
